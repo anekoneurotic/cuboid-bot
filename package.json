@@ -1,0 +1,26 @@
+{
+    "name": "cuboid-bot",
+    "version": "0.1.0",
+    "author": "Aneko Neurotic <aneko@neurotic.sexy>",
+    "description": "Cuboid Discord bot.",
+    "license": "BSD-3-Clause",
+    "type": "commonjs",
+    "main": "src/app.cjs",
+    "engines": {
+        "npm": ">=8.0.0",
+        "node": ">=18.16.1"
+    },
+    "dependencies": {
+        "discord-api-types": "^0.37.48",
+        "discord.js": "^14.11.0",
+        "dotenv": "^16.3.1",
+        "pino": "^8.14.1",
+        "pino-pretty": "^10.0.1"
+    },
+    "devDependencies": {
+        "eslint": "^8.45.0"
+    },
+    "scripts": {
+        "start": "node ."
+    }
+}

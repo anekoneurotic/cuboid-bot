@@ -1,0 +1,126 @@
+root: true
+
+env:
+  node: true
+  es2023: true
+parserOptions:
+  sourceType: 'script'
+
+extends:
+  - 'eslint:recommended'
+
+rules:
+  array-bracket-newline:
+  - 'error'
+  - 'consistent'
+  arrow-parens:
+  - 'error'
+  arrow-spacing:
+  - 'error'
+  class-methods-use-this:
+  - 'error'
+  comma-dangle:
+  - 'error'
+  - 'always-multiline'
+  comma-spacing:
+  - 'error'
+  consistent-return:
+  - 'error'
+  default-param-last:
+  - 'error'
+  eqeqeq:
+  - 'error'
+  - 'always'
+  - {
+    'null': 'ignore',
+  }
+  function-paren-newline:
+  - 'error'
+  - 'multiline-arguments'
+  indent:
+  - 'error'
+  - 4
+  - {
+    SwitchCase: 1,
+  }
+  key-spacing:
+  - 'error'
+  keyword-spacing:
+  - 'error'
+  prefer-rest-params:
+  - 'error'
+  new-parens:
+  - 'error'
+  no-constant-condition:
+  - 'error'
+  - {
+    checkLoops: false,
+  }
+  no-fallthrough:
+  - 'error'
+  no-implicit-coercion:
+  - 'error'
+  - {
+    allow: [ '!!' ],
+  }
+  no-invalid-this:
+  - 'error'
+  - {
+    capIsConstructor: false,
+  }
+  no-label-var:
+  - 'error'
+  no-lone-blocks:
+  - 'error'
+  no-magic-numbers:
+  - 'error'
+  - {
+    enforceConst: true,
+  }
+  no-new-native-nonconstructor:
+  - 'error'
+  no-param-reassign:
+  - 'error'
+  no-promise-executor-return:
+  - 'error'
+  no-self-compare:
+  - 'error'
+  no-shadow:
+  - 'error'
+  no-tabs:
+  - 'error'
+  no-template-curly-in-string:
+  - 'error'
+  no-trailing-spaces:
+  - 'error'
+  no-unused-expressions:
+  - 'error'
+  no-unused-private-class-members:
+  - 'error'
+  no-use-before-define:
+  - 'error'
+  - {
+    allowNamedExports: true,
+  }
+  no-var:
+  - 'error'
+  object-curly-newline:
+  - 'error'
+  - {
+    consistent: true,
+  }
+  semi:
+  - 'error'
+  - 'always'
+  space-before-blocks:
+  - 'error'
+  space-unary-ops:
+  - 'error'
+  spaced-comment:
+  - 'error'
+  - 'always'
+  strict:
+  - 'error'
+  - 'global'
+  yoda:
+  - 'error'
