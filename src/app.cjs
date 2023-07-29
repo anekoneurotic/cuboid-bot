@@ -3,7 +3,7 @@
 const { GatewayIntentBits } = require('discord-api-types/v10');
 const { IntentsBitField } = require('discord.js');
 
-const { Bot } = require('./bot.cjs');
+const { Bot } = require('./core/bot.cjs');
 
 require('dotenv').config();
 

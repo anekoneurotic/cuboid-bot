@@ -50,7 +50,6 @@ class Bot {
                     { type: ActivityType.Playing, name: "with Dark Magicks" },
                 ],
             });
-            this.logger.error(new Error('test error'));
         });
 
         this.client.on(Events.Error, (error) => {
