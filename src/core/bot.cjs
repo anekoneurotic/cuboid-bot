@@ -6,22 +6,32 @@ const pino = require('pino');
 
 class Bot {
     client;
-    logger;
+    devGuildId;
 
     #debugMode;
+    #devGuildId;
     #djsLogger;
+    #logger;
 
     constructor({
+        botOptions: {
+            debugMode = undefined,
+            devGuildId = undefined,
+        } = {},
         clientOptions = {},
-        debug = undefined,
     }) {
-        this.#debugMode = (typeof debug === 'boolean')
-            ? debug
+        this.#debugMode = (typeof debugMode === 'boolean')
+            ? debugMode
             : process.env.NODE_ENV !== 'production'
         ;
 
+        this.#devGuildId = (typeof devGuildId === 'string')
+            ? devGuildId
+            : process.env.CUBOID_DEV_GUILD
+        ;
+
         const level = (this.#debugMode) ? 'debug' : 'info';
-        this.logger = pino({
+        this.#logger = pino({
             level,
             transport: {
                 targets: [
@@ -39,12 +49,14 @@ class Bot {
                 ],
             },
         }).child({ cuboidContext: 'bot' });
-        this.#djsLogger = this.logger.child({ cuboidContext: 'discord.js' });
+        this.#djsLogger = this.#logger.child({ cuboidContext: 'discord.js' });
 
         this.client = new Client(clientOptions);
 
         this.client.once(Events.ClientReady, (client) => {
-            this.logger.info(`Ready! Logged in as ${client.user.tag}`);
+            this.#logger.info(`Ready! Logged in as ${client.user.tag}`);
+            this.#logger.info(`Development guild: ${this.devGuild}`);
+
             client.user.setPresence({
                 activities: [
                     { type: ActivityType.Playing, name: "with Dark Magicks" },
@@ -63,7 +75,13 @@ class Bot {
         this.client.on(Events.Debug, (info) => {
             this.#djsLogger.debug(info);
         });
+    }
 
+    get devGuild() {
+        return (this.client.isReady())
+            ? this.client.guilds.resolve(this.#devGuildId)
+            : null
+        ;
     }
 
     start({
