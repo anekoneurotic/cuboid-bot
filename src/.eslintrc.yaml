@@ -76,6 +76,7 @@ rules:
   - 'error'
   - {
     enforceConst: true,
+    ignoreArrayIndexes: true,
   }
   no-new-native-nonconstructor:
   - 'error'
@@ -97,6 +98,11 @@ rules:
   - 'error'
   no-unused-private-class-members:
   - 'error'
+  no-unused-vars:
+  - 'error'
+  - {
+    argsIgnorePattern: '^_'
+  }
   no-use-before-define:
   - 'error'
   - {
